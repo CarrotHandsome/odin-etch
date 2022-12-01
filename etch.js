@@ -14,6 +14,9 @@ window.onload = function() {
     window.addEventListener('mouseup', () => { mouseDown = false; });
 
     buildGrid();
+
+    const colorButtons = document.querySelectorAll('.btn-color');
+    colorButtons.forEach(btn => btn.addEventListener('click', onColorClick));
 };
 
 function buttonPress() {    
@@ -60,4 +63,11 @@ function buildGrid() {
             main.appendChild(newCell);
         }
     }
+}
+
+function onColorClick() {
+    const colorButtons = document.querySelectorAll('.btn-color');
+    colorButtons.forEach(btn => btn.innerHTML = btn.getAttribute('id').toLowerCase());
+    this.innerHTML = this.getAttribute('id').toUpperCase();
+    selectedColor = this.getAttribute('id');
 }
